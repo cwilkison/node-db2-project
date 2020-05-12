@@ -26,5 +26,28 @@ router.post('/', (req, res) => {
     })
 });
 
+router.put('/:id', (req, res) => {
+    const carData = req.body;
+    db('car').update(carData)
+    .where({id:req.params.id})
+    .then(newCarUpdate => {
+        res.status(200).json(newCarUpdate);
+    })
+    .catch(err => {
+        res.status(500).json({ message: "Car not updated"});
+    })
+});
+
+router.delete('/:id', (req, res) => {
+    db('car').delete()
+    .where({id:req.params.id})
+    .then(carDelete => {
+        res.status(200).json(carDelete);
+    })
+    .catch(err => {
+        res.status(500).json({ message: "Car not deleted"});
+    })
+})
+
 
 module.exports = router;

@@ -8,6 +8,9 @@ module.exports = {
       filename: './data/car-dealer.db3'
     },
     useNullAsDefault: true,
+    seeds: {
+      directory: "./seeds/car.js"
+    },
   },
 
 
